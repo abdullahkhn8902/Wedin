@@ -37,10 +37,22 @@ const arefRuqaa = Aref_Ruqaa({
   display: "swap",
 });
 
-// Set NEXT_PUBLIC_SITE_URL to your deployed domain (e.g. https://sobia-suleman.com)
-// so the share image resolves to an absolute URL. Vercel auto-detects this; the
-// localhost fallback only matters for local previews.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+// Origin used to build the ABSOLUTE share-image URL that link-preview crawlers
+// fetch. Priority:
+//   1. NEXT_PUBLIC_SITE_URL  — set this to your custom domain when you have one.
+//   2. Vercel's deployment URL — auto-detected, so previews work with zero config.
+//   3. localhost — dev only (link previews can't use this; see note below).
+//
+// NOTE: link previews CANNOT work against localhost — the app showing the preview
+// fetches the image over the public internet, so the site must be deployed (or
+// exposed via a tunnel like `ngrok`).
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
 
 const title = "Sobia & Suleman | Wedding Invitation";
 const description =
