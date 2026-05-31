@@ -591,3 +591,439 @@ footer .credit {
     gap: 8px;
   }
 }
+
+/* ============================================================
+   Floating music toggle (small green mic button)
+   ============================================================ */
+.music-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 900;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(58, 70, 52, 0.28);
+  transition: transform 0.2s ease, background 0.2s ease;
+  animation: musicFadeIn 0.5s ease both;
+}
+
+.music-toggle svg {
+  width: 17px;
+  height: 17px;
+}
+
+.music-toggle:hover {
+  background: #2c362a;
+  transform: scale(1.08);
+}
+
+/* Gentle breathing ring while the music is playing. */
+.music-toggle.is-playing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  animation: musicPulse 2.4s ease-out infinite;
+}
+
+.music-toggle.is-muted {
+  background: var(--green-soft);
+}
+
+@keyframes musicFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes musicPulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle,
+  .music-toggle.is-playing::after {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Envelope intro overlay
+   ============================================================ */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 38%, #f7f2e7 0%, var(--cream) 62%, #e9e1cf 100%);
+  transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+}
+
+.intro-overlay.leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease;
+}
+
+.intro-overlay.leaving .envelope-scene {
+  transform: scale(1.12);
+  opacity: 0;
+}
+
+/* The envelope itself (a reset button so the whole thing is clickable). */
+.envelope {
+  position: relative;
+  width: 540px;
+  height: 320px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1300px;
+}
+
+.envelope:focus,
+.envelope:focus-visible {
+  outline: none;
+}
+
+.env-body {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 10px;
+  background: linear-gradient(150deg, #efe7d4, #e4d9c0);
+  box-shadow: 0 30px 60px rgba(58, 70, 52, 0.22), inset 0 0 0 1px rgba(58, 70, 52, 0.08);
+}
+
+/* Invitation card tucked inside the envelope. */
+.env-card {
+  position: absolute;
+  top: 16px;
+  left: 22px;
+  width: 496px;
+  height: 288px;
+  z-index: 2;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #faf6ee, #f2ebdb);
+  box-shadow: 0 12px 26px rgba(58, 70, 52, 0.18);
+  transform: translateY(0);
+  transition: transform 0.95s cubic-bezier(0.2, 0.85, 0.25, 1) 0.45s,
+    z-index 0s linear 0.45s;
+}
+
+.intro-overlay.opening .env-card {
+  transform: translateY(-72%);
+  /* Lift above the front pocket (z4) once it starts rising, so the card and
+     its text clearly slide out in front rather than behind the pocket. */
+  z-index: 5;
+}
+
+.env-card-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+}
+
+.ec-ayah {
+  font-family: var(--font-arabic), serif;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--green);
+  margin-bottom: 2px;
+}
+
+.ec-top {
+  font-family: var(--font-lora), serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--green-soft);
+}
+
+.ec-names {
+  font-family: var(--font-great-vibes), cursive;
+  font-size: 52px;
+  line-height: 1.05;
+  color: var(--green);
+}
+
+.ec-rule {
+  width: 70px;
+  height: 1px;
+  background: var(--green-soft);
+  opacity: 0.6;
+  margin: 2px 0;
+}
+
+.ec-date {
+  font-family: var(--font-lora), serif;
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: var(--green-soft);
+}
+
+/* Front pocket: covers the card's lower half, with the classic envelope V-notch. */
+.env-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(160deg, #e9dfc9, #ddd1b6);
+  clip-path: polygon(0 0, 50% 44%, 100% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 0 0 1px rgba(58, 70, 52, 0.06);
+}
+
+/* Top flap that swings open in 3D. */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 540px;
+  height: 202px;
+  z-index: 6;
+  background: linear-gradient(165deg, #45533d, #36412f);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.85s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.intro-overlay.opening .env-flap {
+  transform: rotateX(178deg);
+  z-index: 1;
+  transition: transform 0.85s ease, z-index 0s linear 0.42s;
+}
+
+/* Wax seal sitting where the flap meets the body. */
+.env-seal {
+  position: absolute;
+  top: 154px;
+  left: 50%;
+  width: 96px;
+  height: 96px;
+  margin-left: -48px;
+  z-index: 7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  font-family: var(--font-great-vibes), cursive;
+  font-size: 40px;
+  background: radial-gradient(circle at 36% 30%, #51614789, #51614700 60%),
+    radial-gradient(circle at 50% 50%, #46553e, #313c2d);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.18),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease, opacity 0.45s ease;
+}
+
+.env-seal::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(#3a4634 0 11deg, #2f3927 11deg 22deg);
+  filter: blur(0.2px);
+}
+
+.intro-overlay.opening .env-seal {
+  transform: scale(0.45) translateY(-30px) rotate(-22deg);
+  opacity: 0;
+}
+
+.env-hint {
+  font-family: var(--font-lora), serif;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: var(--green-soft);
+  font-size: 16px;
+  opacity: 0.9;
+  animation: hintPulse 2.4s ease-in-out infinite;
+}
+
+.intro-overlay.opening .env-hint,
+.intro-overlay.leaving .env-hint {
+  opacity: 0;
+  animation: none;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* "Tap tap" hand hint: appears a few seconds in, taps, then fades away. */
+.tap-hint {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  animation: tapLifecycle 5.4s ease 2.6s both;
+}
+
+.tap-ripple {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.28);
+  animation: tapRipple 1.25s ease-out infinite;
+}
+
+.tap-hand {
+  margin-top: -10px;
+  font-size: 46px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.35));
+  animation: tapTap 1.25s ease-in-out infinite;
+}
+
+.intro-overlay.opening .tap-hint,
+.intro-overlay.leaving .tap-hint {
+  opacity: 0 !important;
+  animation: none;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes tapLifecycle {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tapTap {
+  0%,
+  55%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  12% {
+    transform: translateY(-9px) scale(0.94);
+  }
+  24% {
+    transform: translateY(0) scale(1);
+  }
+  36% {
+    transform: translateY(-9px) scale(0.94);
+  }
+  48% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tapRipple {
+  0%,
+  55%,
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  12% {
+    transform: scale(0.5);
+    opacity: 0.85;
+  }
+  42% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .envelope {
+    transform: scale(0.86);
+  }
+}
+
+@media (max-width: 440px) {
+  .envelope {
+    transform: scale(0.76);
+  }
+}
+
+@media (max-width: 380px) {
+  .envelope {
+    transform: scale(0.66);
+  }
+}
+
+@media (max-width: 340px) {
+  .envelope {
+    transform: scale(0.58);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay,
+  .envelope-scene,
+  .env-flap,
+  .env-card,
+  .env-seal,
+  .env-hint,
+  .tap-hint,
+  .tap-hand,
+  .tap-ripple {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

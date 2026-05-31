@@ -37,10 +37,34 @@ const arefRuqaa = Aref_Ruqaa({
   display: "swap",
 });
 
+// Set NEXT_PUBLIC_SITE_URL to your deployed domain (e.g. https://sobia-suleman.com)
+// so the share image resolves to an absolute URL. Vercel auto-detects this; the
+// localhost fallback only matters for local previews.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const title = "Sobia & Suleman | Wedding Invitation";
+const description =
+  "Sobia & Suleman are getting married on Friday, September 4, 2026 at Topaz Event Complex, Lahore. You're invited to celebrate with us.";
+
 export const metadata: Metadata = {
-  title: "Sobia & Suleman | Wedding Invitation",
-  description:
-    "Sobia & Suleman are getting married on Friday, September 4, 2026 at Topaz Event Complex, Lahore.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    title: "You're Invited — Sobia & Suleman",
+    description,
+    url: "/",
+    siteName: "Sobia & Suleman Wedding",
+    locale: "en_US",
+    type: "website",
+    // The og:image is supplied automatically by app/opengraph-image.tsx
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "You're Invited — Sobia & Suleman",
+    description,
+    // The twitter:image is supplied automatically by app/twitter-image.tsx
+  },
 };
 
 export default function RootLayout({
