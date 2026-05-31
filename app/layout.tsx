@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Great_Vibes, Cormorant_Garamond, Lora, Amiri } from "next/font/google";
+import {
+  Great_Vibes,
+  Cormorant_Garamond,
+  Lora,
+  Aref_Ruqaa,
+} from "next/font/google";
 import "./globals.css";
 
 const greatVibes = Great_Vibes({
@@ -25,10 +30,10 @@ const lora = Lora({
   display: "swap",
 });
 
-const amiri = Amiri({
+const arefRuqaa = Aref_Ruqaa({
   subsets: ["arabic"],
   weight: ["400", "700"],
-  variable: "--font-amiri",
+  variable: "--font-arabic",
   display: "swap",
 });
 
@@ -46,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${greatVibes.variable} ${cormorant.variable} ${lora.variable} ${amiri.variable}`}
+      className={`${greatVibes.variable} ${cormorant.variable} ${lora.variable} ${arefRuqaa.variable}`}
     >
       <body>{children}</body>
     </html>

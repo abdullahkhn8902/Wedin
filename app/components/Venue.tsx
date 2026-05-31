@@ -7,7 +7,10 @@ export default function Venue() {
     <section id="venue">
       <div className="section-title">
         <h2>Where We Celebrate</h2>
-        <p>The place where we&apos;ll say &quot;Qabool Hai&quot;</p>
+        <p className="venue-subtitle">
+          The place where we&apos;ll say{" "}
+          &ldquo;<span className="qabool">Qabool Hai</span>&rdquo;
+        </p>
       </div>
       <div className="card">
         <div className="circle-icon">♡</div>
