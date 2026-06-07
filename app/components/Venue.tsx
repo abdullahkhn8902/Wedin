@@ -8,7 +8,7 @@ export default function Venue() {
       <div className="section-title">
         <h2>Come Celebrate the Happy Moment of</h2>
         <p className="venue-subtitle">
-          Habib Ahmad Khan and Shafqat Iqbal
+          Habib Ahmad and Shafqat Iqbal
         </p>
       </div>
       <div className="card">
