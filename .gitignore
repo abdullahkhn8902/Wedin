@@ -32,6 +32,7 @@ dev.pid
 
 # env files
 .env*
+!.env.example
 
 # vercel
 .vercel
