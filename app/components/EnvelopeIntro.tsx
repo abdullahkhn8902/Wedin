@@ -7,6 +7,9 @@ type Phase = "closed" | "opening" | "leaving" | "gone";
 export default function EnvelopeIntro() {
   const [phase, setPhase] = useState<Phase>("closed");
   const timers = useRef<number[]>([]);
+  // True once the invitation has been opened (by tap, auto-open, or skip), so
+  // the auto-open timer can never re-trigger after the guest has already acted.
+  const opened = useRef(false);
 
   // Lock background scroll while the intro is on screen.
   useEffect(() => {
@@ -30,14 +33,28 @@ export default function EnvelopeIntro() {
   // Let keyboard / assistive-tech users skip the overlay with Escape.
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") setPhase("gone");
+      if (event.key === "Escape") {
+        opened.current = true;
+        setPhase("gone");
+      }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Open the invitation on its own after a short pause, so guests see the
+  // animation without having to tap. Tapping earlier still works — and a real
+  // tap is what lets the music autoplay, which an auto-open can't carry.
+  useEffect(() => {
+    const id = window.setTimeout(handleOpen, 3000);
+    return () => window.clearTimeout(id);
+    // handleOpen is guarded by the `opened` ref, so a one-shot timer is safe.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function handleOpen() {
-    if (phase !== "closed") return;
+    if (opened.current) return;
+    opened.current = true;
     // Kick off the background music. Dispatching here keeps us inside the click
     // gesture, which is what browsers require before audio is allowed to play.
     window.dispatchEvent(new Event("invitation:open"));
@@ -80,16 +97,16 @@ export default function EnvelopeIntro() {
                 وَخَلَقْنَاكُمْ أَزْوَاجًا
               </p>
               <p className="ec-top">You&apos;re Invited</p>
-              <p className="ec-names">Sobia &amp; Suleman</p>
+              <p className="ec-names">Rehan &amp; Afifa</p>
               <span className="ec-rule" />
-              <p className="ec-date">04 · 09 · 2026</p>
+              <p className="ec-date">12 · 06 · 2026</p>
             </div>
           </div>
 
           <div className="env-pocket" />
           <div className="env-flap" />
           <div className="env-seal">
-            <span>S&amp;S</span>
+            <span>R&amp;A</span>
           </div>
 
           <span className="tap-hint" aria-hidden="true">

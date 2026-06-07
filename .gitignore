@@ -24,6 +24,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# local dev server logs / pid
+dev.log
+dev.out.log
+dev.err.log
+dev.pid
+
 # env files
 .env*
 

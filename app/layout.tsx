@@ -54,26 +54,26 @@ const siteUrl =
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000");
 
-const title = "Sobia & Suleman | Wedding Invitation";
+const title = "Rehan & Afifa | Wedding Invitation";
 const description =
-  "Sobia & Suleman are getting married on Friday, September 4, 2026 at Topaz Event Complex, Lahore. You're invited to celebrate with us.";
+  "Rehan & Afifa are getting married on Friday, June 12, 2026 at Sichuan Chinese Restaurant, Lahore. You're invited to celebrate with us.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
   openGraph: {
-    title: "You're Invited — Sobia & Suleman",
+    title: "You're Invited — Rehan & Afifa",
     description,
     url: "/",
-    siteName: "Sobia & Suleman Wedding",
+    siteName: "Rehan & Afifa Wedding",
     locale: "en_US",
     type: "website",
     // The og:image is supplied automatically by app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "You're Invited — Sobia & Suleman",
+    title: "You're Invited — Rehan & Afifa",
     description,
     // The twitter:image is supplied automatically by app/twitter-image.tsx
   },

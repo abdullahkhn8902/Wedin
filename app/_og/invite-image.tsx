@@ -7,7 +7,7 @@ import { join } from "node:path";
  * Shared renderer for the social-share (Open Graph / Twitter) preview image.
  *
  * It mirrors what visitors see *first* on the site: the sealed invitation
- * envelope (cream body, deep-green flap, "S&S" wax seal) resting on the same
+ * envelope (cream body, deep-green flap, "R&A" wax seal) resting on the same
  * cream radial background as the intro overlay — with the names, date and
  * venue beneath so the share preview still reads at a glance.
  *
@@ -24,7 +24,7 @@ const cormorantSemi = readFileSync(join(FONT_DIR, "CormorantGaramond-SemiBold.tt
 export const OG_SIZE = { width: 1200, height: 630 };
 
 export const OG_ALT =
-  "Sobia & Suleman — Wedding Invitation. Friday, September 4, 2026 at Topaz Event Complex, Lahore.";
+  "Rehan & Afifa — Wedding Invitation. Friday, June 12, 2026 at Sichuan Chinese Restaurant, Lahore.";
 
 const cream = "#f1ebdf";
 const green = "#3a4634";
@@ -146,7 +146,7 @@ export function renderInviteImage() {
                 "0 5px 12px rgba(0,0,0,0.3), inset 0 2px 5px rgba(255,255,255,0.18), inset 0 -3px 6px rgba(0,0,0,0.3)",
             }}
           >
-            S&amp;S
+            R&amp;A
           </div>
         </div>
 
@@ -160,7 +160,7 @@ export function renderInviteImage() {
             marginTop: 34,
           }}
         >
-          Sobia &amp; Suleman
+          Rehan &amp; Afifa
         </div>
 
         {/* Ornamental divider */}
@@ -180,7 +180,7 @@ export function renderInviteImage() {
             color: green,
           }}
         >
-          FRIDAY · SEPTEMBER 4, 2026
+          FRIDAY · JUNE 12, 2026
         </div>
 
         {/* Venue */}
@@ -193,7 +193,7 @@ export function renderInviteImage() {
             marginTop: 8,
           }}
         >
-          Topaz Event Complex · Lahore
+          Sichuan Chinese Restaurant · Lahore
         </div>
       </div>
     ),

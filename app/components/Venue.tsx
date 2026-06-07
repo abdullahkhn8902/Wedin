@@ -1,30 +1,29 @@
-const MAPS_LINK = "https://maps.app.goo.gl/pzZ5qJFSe3UPPETG8";
+const MAPS_LINK = "https://share.google/jbwxlYDsCkXjT1mCN";
 const MAPS_EMBED =
-  "https://maps.google.com/maps?q=31.4515104,74.2719029&z=16&output=embed";
+  "https://maps.google.com/maps?q=Sichuan+Chinese+Restaurant+Main+Canal+Road+Johar+Town+Lahore&z=16&output=embed";
 
 export default function Venue() {
   return (
     <section id="venue">
       <div className="section-title">
-        <h2>Where We Celebrate</h2>
+        <h2>Come Celebrate the Happy Moment of</h2>
         <p className="venue-subtitle">
-          The place where we&apos;ll say{" "}
-          &ldquo;<span className="qabool">Qabool Hai</span>&rdquo;
+          Habib &amp; Shafqat&apos;s Family
         </p>
       </div>
       <div className="card">
         <div className="circle-icon">♡</div>
-        <div className="venue-name">Topaz Event Complex</div>
+        <div className="venue-name">Sichuan Chinese Restaurant</div>
         <div className="venue-times">
-          <span>Nikah: 7:00 PM</span>
-          <span>Dinner: 8:00 PM</span>
+          <span>Event Starting Time: 5:00 PM</span>
+          <span>Dinner: 5:30 PM</span>
         </div>
         <div className="address">
-          Shaukat Khanum Road, Johar Town, Lahore, Punjab, Pakistan
+          Main Canal Road, Block G4, Johar Town, Lahore, Punjab, Pakistan
         </div>
         <div className="venue-map">
           <iframe
-            title="Map to Topaz Event Complex"
+            title="Map to Sichuan Chinese Restaurant"
             src={MAPS_EMBED}
             loading="lazy"
             allowFullScreen

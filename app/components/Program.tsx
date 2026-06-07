@@ -1,8 +1,7 @@
 const PROGRAM = [
-  { time: "6:00 PM", title: "Welcome", desc: "Reception and arrival of guests" },
-  { time: "7:00 PM", title: "Nikah", desc: "The wedding ceremony" },
-  { time: "8:00 PM", title: "Dinner", desc: "Dinner is served" },
-  { time: "10:00 PM", title: "Conclusion", desc: "The celebration comes to a close" },
+  { time: "5:00 PM", title: "Welcome", desc: "Reception and arrival of guests" },
+  { time: "5:30 PM", title: "Dinner", desc: "Dinner is served" },
+  { time: "8:00 PM", title: "Conclusion", desc: "The celebration comes to a close" },
 ];
 
 export default function Program() {
