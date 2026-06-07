@@ -56,7 +56,7 @@ const siteUrl =
 
 const title = "Rehan & Afifa | Wedding Invitation";
 const description =
-  "Rehan & Afifa are getting married on Friday, June 12, 2026 at Sichuan Chinese Restaurant, Lahore. You're invited to celebrate with us.";
+  "Rehan & Afifa are getting married on Friday, June 12, 2026 at Gulzar's Event Complex By SICHUAN, Lahore. You're invited to celebrate with us.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

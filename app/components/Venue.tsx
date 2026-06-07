@@ -1,6 +1,6 @@
-const MAPS_LINK = "https://share.google/jbwxlYDsCkXjT1mCN";
+const MAPS_LINK = "https://share.google/U9hlRm5hkaTkixH5g";
 const MAPS_EMBED =
-  "https://maps.google.com/maps?q=Sichuan+Chinese+Restaurant+Main+Canal+Road+Johar+Town+Lahore&z=16&output=embed";
+  "https://maps.google.com/maps?q=Gulzar%27s+Event+Complex+By+SICHUAN+Johar+Town+Lahore&z=16&output=embed";
 
 export default function Venue() {
   return (
@@ -13,7 +13,7 @@ export default function Venue() {
       </div>
       <div className="card">
         <div className="circle-icon">♡</div>
-        <div className="venue-name">Sichuan Chinese Restaurant</div>
+        <div className="venue-name">Gulzar&apos;s Event Complex By SICHUAN</div>
         <div className="venue-times">
           <span>Event Starting Time: 5:00 PM</span>
           <span>Dinner: 5:30 PM</span>
@@ -23,7 +23,7 @@ export default function Venue() {
         </div>
         <div className="venue-map">
           <iframe
-            title="Map to Sichuan Chinese Restaurant"
+            title="Map to Gulzar's Event Complex By SICHUAN"
             src={MAPS_EMBED}
             loading="lazy"
             allowFullScreen

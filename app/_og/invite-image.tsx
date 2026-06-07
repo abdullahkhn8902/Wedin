@@ -24,7 +24,7 @@ const cormorantSemi = readFileSync(join(FONT_DIR, "CormorantGaramond-SemiBold.tt
 export const OG_SIZE = { width: 1200, height: 630 };
 
 export const OG_ALT =
-  "Rehan & Afifa — Wedding Invitation. Friday, June 12, 2026 at Sichuan Chinese Restaurant, Lahore.";
+  "Rehan & Afifa — Wedding Invitation. Friday, June 12, 2026 at Gulzar's Event Complex By SICHUAN, Lahore.";
 
 const cream = "#f1ebdf";
 const green = "#3a4634";
@@ -193,7 +193,7 @@ export function renderInviteImage() {
             marginTop: 8,
           }}
         >
-          Sichuan Chinese Restaurant · Lahore
+          Gulzar&apos;s Event Complex By SICHUAN · Lahore
         </div>
       </div>
     ),
