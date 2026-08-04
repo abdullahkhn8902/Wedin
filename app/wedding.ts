@@ -21,6 +21,8 @@ export const DATE_LONG = "AUGUST 21 – 23, 2026";
 export type Venue = {
   id: string;
   name: string;
+  /** Short "which part of town" line, so an event card locates itself. */
+  area: string;
   address: string;
   /** Public Google Maps link the guest opens on their phone. */
   mapsLink: string;
@@ -31,6 +33,7 @@ export type Venue = {
 const RESIDENCE: Venue = {
   id: "residence",
   name: "At the Residence",
+  area: "Saroba Garden, Ferozepur Road",
   address: "Saroba Garden, Ferozepur Road, Lahore, Punjab, Pakistan",
   mapsLink: "https://goo.gl/maps/wQqPBh9KuGtdtiyA8?g_st=awb",
   // Pinned by coordinates — the location is a home, not a listed business.
@@ -40,6 +43,7 @@ const RESIDENCE: Venue = {
 const DYNASTY: Venue = {
   id: "dynasty",
   name: "Dynasty Garrison — Hall 21",
+  area: "Askari IX Approach Rd, Lahore Cantt",
   address: "Askari IX Approach Road, Askari 1, Lahore Cantt, Punjab, Pakistan",
   mapsLink: "https://share.google/nr33Pqa44L0iwOh90",
   mapsEmbed:

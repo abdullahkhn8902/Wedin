@@ -2,8 +2,11 @@ import { EVENTS } from "../wedding";
 
 /**
  * The three functions, side by side on desktop and stacked on a phone.
- * Each card links down to its venue block, so the map for a function is
- * always one tap away without repeating the same map three times.
+ *
+ * Each card names its own venue and opens Google Maps directly, so a guest
+ * can act on a single function without scrolling anywhere. The maps themselves
+ * are left to the venue section below — two of these three share a venue, so
+ * embedding a map per card would render the same map twice.
  */
 export default function Events() {
   return (
@@ -27,9 +30,15 @@ export default function Events() {
             </p>
             <p className="ev-time">{event.time}</p>
             <p className="ev-venue">{event.venue.name}</p>
-            <a className="ev-link" href={`#venue-${event.venue.id}`}>
-              Directions
-              <span aria-hidden="true">↓</span>
+            <p className="ev-area">{event.venue.area}</p>
+            <a
+              className="btn btn-outline ev-btn"
+              href={event.venue.mapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ◎ Open in Maps
+              <span className="sr-only"> for the {event.name}</span>
             </a>
           </article>
         ))}
