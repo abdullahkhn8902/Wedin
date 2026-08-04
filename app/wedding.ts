@@ -33,8 +33,8 @@ export type Venue = {
 const RESIDENCE: Venue = {
   id: "residence",
   name: "At the Residence",
-  area: "Saroba Garden, Ferozepur Road",
-  address: "Saroba Garden, Ferozepur Road, Lahore, Punjab, Pakistan",
+  area: "Ideal Garden, Ferozepur Road",
+  address: "Ideal Garden, Ferozepur Road, Lahore, Punjab, Pakistan",
   mapsLink: "https://goo.gl/maps/wQqPBh9KuGtdtiyA8?g_st=awb",
   // Pinned by coordinates — the location is a home, not a listed business.
   mapsEmbed: "https://maps.google.com/maps?q=31.435110,74.354279&z=17&output=embed",
