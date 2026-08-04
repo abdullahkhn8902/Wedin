@@ -23,7 +23,7 @@ export default function Events() {
               {event.glyph}
             </div>
             <h3 className="ev-name">{event.name}</h3>
-            <p className="ev-alt">{event.alt}</p>
+            {event.alt && <p className="ev-alt">{event.alt}</p>}
             <span className="ev-rule" aria-hidden="true" />
             <p className="ev-date">
               {event.weekday} · {event.dateLabel}

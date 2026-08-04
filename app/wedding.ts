@@ -57,8 +57,8 @@ export type WeddingEvent = {
   /** "Day One" — the ribbon across the top of the event card. */
   ordinal: string;
   name: string;
-  /** The second name guests know the function by. */
-  alt: string;
+  /** The second name guests know the function by. Omitted when the name stands alone. */
+  alt?: string;
   /** Small ornament on the event card. */
   glyph: string;
   weekday: string;
@@ -79,7 +79,6 @@ export const EVENTS: WeddingEvent[] = [
     id: "bbq",
     ordinal: "Day One",
     name: "BBQ Dinner",
-    alt: "Our Mehndi night",
     glyph: "❋",
     weekday: "Friday",
     dateLabel: "21 August 2026",
