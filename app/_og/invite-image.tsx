@@ -2,14 +2,15 @@
 import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { COUPLE, DATE_LINE, EVENTS, INITIALS } from "../wedding";
 
 /**
  * Shared renderer for the social-share (Open Graph / Twitter) preview image.
  *
  * It mirrors what visitors see *first* on the site: the sealed invitation
- * envelope (cream body, deep-green flap, "R&A" wax seal) resting on the same
- * cream radial background as the intro overlay — with the names, date and
- * venue beneath so the share preview still reads at a glance.
+ * envelope (cream body, deep-green flap, "B&A" wax seal) resting on the same
+ * cream radial background as the intro overlay — with the names, dates and the
+ * three functions beneath so the share preview still reads at a glance.
  *
  * Generated at request/build time with `next/og` (Satori) using the site fonts.
  * Used by both `app/opengraph-image.tsx` and `app/twitter-image.tsx`.
@@ -23,8 +24,12 @@ const cormorantSemi = readFileSync(join(FONT_DIR, "CormorantGaramond-SemiBold.tt
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-export const OG_ALT =
-  "Rehan & Afifa — Wedding Invitation. Friday, June 12, 2026 at Gulzar's Event Complex By SICHUAN, Lahore.";
+export const OG_ALT = `${COUPLE} — Wedding Invitation. BBQ Dinner & Mehndi on Friday 21 August, Barat on Saturday 22 August and Walima on Sunday 23 August 2026, in Lahore.`;
+
+// "BBQ Dinner · 21 Aug — Barat · 22 Aug — Walima · 23 Aug"
+const FUNCTIONS_LINE = EVENTS.map(
+  (event) => `${event.name} · ${event.shortDate.replace(/^\w+ /, "")}`,
+).join("   —   ");
 
 const cream = "#f1ebdf";
 const green = "#3a4634";
@@ -106,19 +111,19 @@ export function renderInviteImage() {
             letterSpacing: 8,
             textTransform: "uppercase",
             color: greenSoft,
-            marginBottom: 26,
+            marginBottom: 20,
           }}
         >
           You&apos;re Invited
         </div>
 
         {/* Sealed envelope (shown first on the site) */}
-        <div style={{ position: "relative", display: "flex", width: 430, height: 255 }}>
+        <div style={{ position: "relative", display: "flex", width: 400, height: 237 }}>
           <img
             src={envSrc}
             alt=""
-            width={430}
-            height={255}
+            width={400}
+            height={237}
             style={{
               borderRadius: 14,
               boxShadow: "0 26px 50px rgba(58,70,52,0.22)",
@@ -128,17 +133,17 @@ export function renderInviteImage() {
           <div
             style={{
               position: "absolute",
-              left: 177,
-              top: 123,
-              width: 76,
-              height: 76,
+              left: 164,
+              top: 116,
+              width: 71,
+              height: 71,
               borderRadius: "50%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               color: cream,
               fontFamily: "Great Vibes",
-              fontSize: 34,
+              fontSize: 32,
               backgroundImage:
                 "radial-gradient(circle at 38% 30%, #55654b 0%, #34402e 70%)",
               border: "2px solid rgba(44,53,38,0.85)",
@@ -146,7 +151,7 @@ export function renderInviteImage() {
                 "0 5px 12px rgba(0,0,0,0.3), inset 0 2px 5px rgba(255,255,255,0.18), inset 0 -3px 6px rgba(0,0,0,0.3)",
             }}
           >
-            R&amp;A
+            {INITIALS}
           </div>
         </div>
 
@@ -154,13 +159,13 @@ export function renderInviteImage() {
         <div
           style={{
             fontFamily: "Great Vibes",
-            fontSize: 96,
+            fontSize: 84,
             lineHeight: 1.05,
             color: green,
-            marginTop: 34,
+            marginTop: 24,
           }}
         >
-          Rehan &amp; Afifa
+          {COUPLE}
         </div>
 
         {/* Ornamental divider */}
@@ -170,7 +175,7 @@ export function renderInviteImage() {
           <div style={{ width: 70, height: 1, backgroundColor: "rgba(107,117,99,0.55)" }} />
         </div>
 
-        {/* Date */}
+        {/* Dates */}
         <div
           style={{
             fontFamily: "Cormorant Garamond",
@@ -180,10 +185,10 @@ export function renderInviteImage() {
             color: green,
           }}
         >
-          FRIDAY · JUNE 12, 2026
+          {DATE_LINE}
         </div>
 
-        {/* Venue */}
+        {/* The three functions */}
         <div
           style={{
             fontFamily: "Cormorant Garamond",
@@ -193,7 +198,22 @@ export function renderInviteImage() {
             marginTop: 8,
           }}
         >
-          Gulzar&apos;s Event Complex By SICHUAN · Lahore
+          {FUNCTIONS_LINE}
+        </div>
+
+        {/* City */}
+        <div
+          style={{
+            fontFamily: "Cormorant Garamond",
+            fontSize: 21,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            color: greenSoft,
+            marginTop: 6,
+            opacity: 0.85,
+          }}
+        >
+          Lahore · Pakistan
         </div>
       </div>
     ),

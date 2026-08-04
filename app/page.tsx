@@ -2,8 +2,8 @@ import EnvelopeIntro from "./components/EnvelopeIntro";
 import MusicPlayer from "./components/MusicPlayer";
 import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
+import Events from "./components/Events";
 import Venue from "./components/Venue";
-import Program from "./components/Program";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -13,8 +13,8 @@ export default function Home() {
       <MusicPlayer />
       <Hero />
       <Countdown />
+      <Events />
       <Venue />
-      <Program />
       <Footer />
     </>
   );

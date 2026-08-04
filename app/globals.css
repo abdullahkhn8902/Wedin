@@ -208,6 +208,30 @@ section {
   color: #fff;
 }
 
+/* Which of the three functions the clock is currently counting down to. */
+.cd-next {
+  width: fit-content;
+  margin: 10px auto 0;
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-lora), serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.cd-when {
+  margin-top: 22px;
+  text-align: center;
+  font-family: var(--font-lora), serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--green-soft);
+}
+
 .countdown {
   display: flex;
   justify-content: center;
@@ -272,11 +296,23 @@ section {
 
 .venue-times {
   display: flex;
-  gap: 30px;
+  gap: 10px 30px;
   justify-content: center;
   color: var(--green-soft);
   margin-bottom: 14px;
   flex-wrap: wrap;
+}
+
+/* Function name inside a venue card's "what happens here" list. */
+.venue-times strong {
+  font-family: var(--font-lora), serif;
+  font-weight: 400;
+  color: var(--green);
+}
+
+/* Event cards link down to a venue — leave a little air above it on landing. */
+.venue-card {
+  scroll-margin-top: 26px;
 }
 
 .address {
@@ -299,10 +335,12 @@ section {
   border: 0;
 }
 
+/* Sits top-right: Google draws its own place card in the map's top-left
+   corner whenever the embed resolves to a named business. */
 .venue-map-link {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -334,6 +372,147 @@ section {
   color: var(--green);
   font-size: 20px;
   margin-bottom: 8px;
+}
+
+/* ============================================================
+   The three functions — one card each
+   ============================================================ */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px 22px;
+  margin-top: 46px;
+}
+
+.event-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid rgba(58, 70, 52, 0.08);
+  border-radius: 18px;
+  padding: 40px 20px 30px;
+  box-shadow: 0 8px 30px rgba(58, 70, 52, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(58, 70, 52, 0.12);
+}
+
+/* Day ribbon straddling the top edge of the card. */
+.ev-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-lora), serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 6px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(58, 70, 52, 0.22);
+}
+
+.ev-icon {
+  width: 52px;
+  height: 52px;
+  font-size: 22px;
+  margin: 4px auto 14px;
+}
+
+.ev-name {
+  font-family: var(--font-lora), serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--green);
+}
+
+.ev-alt {
+  font-family: var(--font-lora), serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--green-soft);
+  margin-top: 2px;
+}
+
+.ev-rule {
+  width: 58px;
+  height: 1px;
+  background: var(--green-soft);
+  opacity: 0.45;
+  margin: 16px 0;
+}
+
+.ev-date {
+  font-family: var(--font-lora), serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-soft);
+}
+
+.ev-time {
+  font-family: var(--font-great-vibes), cursive;
+  font-size: 40px;
+  line-height: 1.15;
+  color: var(--green);
+  margin-top: 2px;
+}
+
+.ev-venue {
+  font-family: var(--font-lora), serif;
+  font-size: 15px;
+  color: var(--green);
+  margin-top: 10px;
+}
+
+.ev-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  padding-bottom: 2px;
+  font-family: var(--font-lora), serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-soft);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(107, 117, 99, 0.4);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ev-link:hover {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+/* Below three-across, show one clean card at a time. */
+@media (max-width: 860px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card {
+    transition: none;
+  }
+  .event-card:hover {
+    transform: none;
+  }
 }
 
 .timeline {
@@ -584,6 +763,10 @@ footer .credit {
   .check-grid {
     grid-template-columns: 1fr;
   }
+  /* Two full names side by side need a smaller script size to stay on one line. */
+  footer .fnames {
+    font-size: 34px;
+  }
   .tl-item {
     flex-direction: column;
     align-items: center;
@@ -780,9 +963,10 @@ footer .credit {
 
 .ec-names {
   font-family: var(--font-great-vibes), cursive;
-  font-size: 52px;
+  font-size: 46px;
   line-height: 1.05;
   color: var(--green);
+  text-align: center;
 }
 
 .ec-rule {

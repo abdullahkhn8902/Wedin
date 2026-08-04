@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { COUPLE, DATE_STAMP, INITIALS } from "../wedding";
 
 type Phase = "closed" | "opening" | "leaving" | "gone";
 
@@ -97,16 +98,16 @@ export default function EnvelopeIntro() {
                 وَخَلَقْنَاكُمْ أَزْوَاجًا
               </p>
               <p className="ec-top">You&apos;re Invited</p>
-              <p className="ec-names">Rehan &amp; Afifa</p>
+              <p className="ec-names">{COUPLE}</p>
               <span className="ec-rule" />
-              <p className="ec-date">12 · 06 · 2026</p>
+              <p className="ec-date">{DATE_STAMP}</p>
             </div>
           </div>
 
           <div className="env-pocket" />
           <div className="env-flap" />
           <div className="env-seal">
-            <span>R&amp;A</span>
+            <span>{INITIALS}</span>
           </div>
 
           <span className="tap-hint" aria-hidden="true">

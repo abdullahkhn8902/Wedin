@@ -1,3 +1,5 @@
+import { BRIDE, GROOM, DATE_LINE } from "../wedding";
+
 export default function Hero() {
   return (
     <header className="hero">
@@ -9,13 +11,13 @@ export default function Hero() {
         <p className="ayah-ref">Qur&apos;an 78:8</p>
       </div>
       <div className="label">We&apos;re Getting Married</div>
-      <div className="names">Rehan</div>
+      <div className="names">{BRIDE}</div>
       <div className="amp">&amp;</div>
-      <div className="names">Afifa</div>
+      <div className="names">{GROOM}</div>
       <div className="star">✦</div>
-      <div className="date">FRIDAY · JUNE 12, 2026</div>
-      <a href="#venue" className="btn">
-        View Location
+      <div className="date">{DATE_LINE}</div>
+      <a href="#events" className="btn">
+        View Events
       </a>
     </header>
   );

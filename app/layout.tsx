@@ -6,6 +6,7 @@ import {
   Aref_Ruqaa,
 } from "next/font/google";
 import "./globals.css";
+import { COUPLE } from "./wedding";
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -54,26 +55,26 @@ const siteUrl =
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000");
 
-const title = "Rehan & Afifa | Wedding Invitation";
+const title = `${COUPLE} | Wedding Invitation`;
 const description =
-  "Rehan & Afifa are getting married on Friday, June 12, 2026 at Gulzar's Event Complex By SICHUAN, Lahore. You're invited to celebrate with us.";
+  "Binte Shakir & Afaq Ishaq are getting married in Lahore. Join us for the BBQ Dinner & Mehndi on Friday 21 August, the Barat on Saturday 22 August, and the Walima reception on Sunday 23 August 2026.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
   openGraph: {
-    title: "You're Invited — Rehan & Afifa",
+    title: `You're Invited — ${COUPLE}`,
     description,
     url: "/",
-    siteName: "Rehan & Afifa Wedding",
+    siteName: `${COUPLE} Wedding`,
     locale: "en_US",
     type: "website",
     // The og:image is supplied automatically by app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "You're Invited — Rehan & Afifa",
+    title: `You're Invited — ${COUPLE}`,
     description,
     // The twitter:image is supplied automatically by app/twitter-image.tsx
   },
