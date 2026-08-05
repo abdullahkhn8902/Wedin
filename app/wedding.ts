@@ -12,11 +12,11 @@ export const COUPLE = `${BRIDE} & ${GROOM}`;
 export const INITIALS = "B&A";
 
 /** Spaced date line under the hero names. */
-export const DATE_LINE = "21 · 22 · 23 AUGUST 2026";
+export const DATE_LINE = "22 · 23 AUGUST 2026";
 /** Compact stamp on the envelope card. */
-export const DATE_STAMP = "21 – 23 · 08 · 2026";
+export const DATE_STAMP = "22 – 23 · 08 · 2026";
 /** Footer / share-image date. */
-export const DATE_LONG = "AUGUST 21 – 23, 2026";
+export const DATE_LONG = "AUGUST 22 – 23, 2026";
 
 export type Venue = {
   id: string;
@@ -76,20 +76,8 @@ export type WeddingEvent = {
 
 export const EVENTS: WeddingEvent[] = [
   {
-    id: "bbq",
-    ordinal: "Day One",
-    name: "BBQ Dinner",
-    glyph: "❋",
-    weekday: "Friday",
-    dateLabel: "21 August 2026",
-    shortDate: "Fri 21 Aug",
-    time: "8:00 PM",
-    startsAt: "2026-08-21T20:00:00+05:00",
-    venue: RESIDENCE,
-  },
-  {
     id: "barat",
-    ordinal: "Day Two",
+    ordinal: "Day One",
     name: "Barat",
     alt: "The wedding day",
     glyph: "♡",
@@ -102,7 +90,7 @@ export const EVENTS: WeddingEvent[] = [
   },
   {
     id: "walima",
-    ordinal: "Day Three",
+    ordinal: "Day Two",
     name: "Walima",
     alt: "The reception",
     glyph: "✦",
@@ -117,7 +105,7 @@ export const EVENTS: WeddingEvent[] = [
 
 /**
  * Events grouped by where they happen, so the venue section shows each map
- * once instead of repeating the shared BBQ Dinner / Barat location twice.
+ * once even when several functions share a location.
  */
 export const VENUE_GROUPS = Object.values(VENUES).map((venue) => ({
   venue,

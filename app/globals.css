@@ -375,13 +375,16 @@ section {
 }
 
 /* ============================================================
-   The three functions — one card each
+   The functions — one card each
    ============================================================ */
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 34px 22px;
-  margin-top: 46px;
+  /* Capped and centred so a pair of cards keeps its portrait proportions
+     instead of stretching across the full section width. */
+  max-width: 680px;
+  margin: 46px auto 0;
 }
 
 .event-card {
@@ -485,7 +488,7 @@ section {
 }
 
 /* .btn-outline, sized down to sit inside an event card. The auto top margin
-   soaks up any leftover height so the three buttons line up across the row
+   soaks up any leftover height so the buttons line up across the row
    even when one venue name wraps to a second line. */
 .ev-btn {
   margin-top: auto;
@@ -506,13 +509,11 @@ section {
   border: 0;
 }
 
-/* Below three-across, show one clean card at a time. */
-@media (max-width: 860px) {
+/* Once the pair would get cramped, show one clean card at a time. */
+@media (max-width: 700px) {
   .events-grid {
     grid-template-columns: 1fr;
     max-width: 430px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 

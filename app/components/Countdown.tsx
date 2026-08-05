@@ -14,7 +14,7 @@ function pad(n: number) {
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
 type State = TimeLeft & {
-  /** Which of the three functions we are counting down to. */
+  /** Which of the functions we are counting down to. */
   index: number;
   /** True once the last function has started. */
   over: boolean;

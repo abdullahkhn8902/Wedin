@@ -1,19 +1,19 @@
 import { EVENTS } from "../wedding";
 
 /**
- * The three functions, side by side on desktop and stacked on a phone.
+ * The functions, side by side on desktop and stacked on a phone.
  *
  * Each card names its own venue and opens Google Maps directly, so a guest
- * can act on a single function without scrolling anywhere. The maps themselves
- * are left to the venue section below — two of these three share a venue, so
- * embedding a map per card would render the same map twice.
+ * can act on a single function without scrolling anywhere. The embedded maps
+ * are left to the venue section below, which groups by venue and so never
+ * renders the same map twice.
  */
 export default function Events() {
   return (
     <section id="events">
       <div className="section-title">
         <h2>Our Celebrations</h2>
-        <p>Three evenings — we would love to have you at every one</p>
+        <p>Two evenings — we would love to have you at both</p>
       </div>
       <div className="events-grid">
         {EVENTS.map((event) => (

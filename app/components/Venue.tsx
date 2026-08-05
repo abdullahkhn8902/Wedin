@@ -5,7 +5,7 @@ export default function Venue() {
     <section id="venue">
       <div className="section-title">
         <h2>Where to Join Us</h2>
-        <p>Three celebrations across two venues</p>
+        <p>Two celebrations across two venues</p>
       </div>
       {VENUE_GROUPS.map(({ venue, events }) => (
         <div className="card venue-card" id={`venue-${venue.id}`} key={venue.id}>

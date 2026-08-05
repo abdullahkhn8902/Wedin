@@ -10,7 +10,7 @@ import { COUPLE, DATE_LINE, EVENTS, INITIALS } from "../wedding";
  * It mirrors what visitors see *first* on the site: the sealed invitation
  * envelope (cream body, deep-green flap, "B&A" wax seal) resting on the same
  * cream radial background as the intro overlay — with the names, dates and the
- * three functions beneath so the share preview still reads at a glance.
+ * functions beneath so the share preview still reads at a glance.
  *
  * Generated at request/build time with `next/og` (Satori) using the site fonts.
  * Used by both `app/opengraph-image.tsx` and `app/twitter-image.tsx`.
@@ -24,9 +24,9 @@ const cormorantSemi = readFileSync(join(FONT_DIR, "CormorantGaramond-SemiBold.tt
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-export const OG_ALT = `${COUPLE} — Wedding Invitation. BBQ Dinner & Mehndi on Friday 21 August, Barat on Saturday 22 August and Walima on Sunday 23 August 2026, in Lahore.`;
+export const OG_ALT = `${COUPLE} — Wedding Invitation. Barat on Saturday 22 August and Walima on Sunday 23 August 2026, in Lahore.`;
 
-// "BBQ Dinner · 21 Aug — Barat · 22 Aug — Walima · 23 Aug"
+// "Barat · 22 Aug — Walima · 23 Aug"
 const FUNCTIONS_LINE = EVENTS.map(
   (event) => `${event.name} · ${event.shortDate.replace(/^\w+ /, "")}`,
 ).join("   —   ");
@@ -188,7 +188,7 @@ export function renderInviteImage() {
           {DATE_LINE}
         </div>
 
-        {/* The three functions */}
+        {/* The functions */}
         <div
           style={{
             fontFamily: "Cormorant Garamond",

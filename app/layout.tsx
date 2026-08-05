@@ -58,12 +58,12 @@ const siteUrl =
 
 const title = `${COUPLE} | Wedding Invitation`;
 const description =
-  "Binte Shakir & Afaq Ishaq are getting married in Lahore. Join us for the BBQ Dinner & Mehndi on Friday 21 August, the Barat on Saturday 22 August, and the Walima reception on Sunday 23 August 2026.";
+  "Binte Shakir & Afaq Ishaq are getting married in Lahore. Join us for the Barat on Saturday 22 August and the Walima reception on Sunday 23 August 2026.";
 
 // Chat apps clip the preview caption after ~2 lines, so the card gets a shorter
 // version of the page description — the full one still goes to search engines.
 const shareDescription =
-  "Three celebrations in Lahore — BBQ Dinner & Mehndi on Fri 21 August, Barat on Sat 22 August, and Walima on Sun 23 August 2026.";
+  "Two celebrations in Lahore — Barat on Sat 22 August and Walima on Sun 23 August 2026.";
 
 const shareTitle = `You're Invited — ${COUPLE}`;
 
